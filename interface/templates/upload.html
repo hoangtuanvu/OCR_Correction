@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload</title>
+</head>
+<body>
+<table>
+  <tr>
+  <td valign="top">
+    <h2>OCR Testing</h2>
+    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" multiple>
+        <input type="submit" value="send">
+    </form>
+  </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+  <td valign="top">
+    <h2>Image</h2>
+      <img src = " {{url_for('static', filename=image_name) }} ">
+  </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+  <td valign="top">
+    {% if result_with_out != None %}
+      <h2>Without OCR Correction</h2>
+        {{ result_with_out }}
+    {% endif %}
+  </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+  <td valign="top">
+    {% if result_with != None %}
+      <h2>With OCR Correction</h2>
+        {{ result_with }}
+    {% endif %}
+  </td>
+  </tr>
+</table>
+</body>
+</html>
